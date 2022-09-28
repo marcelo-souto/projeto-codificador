@@ -27,16 +27,27 @@ const letras = [
   "z",
 ];
 
-const str = "ola tudo bem".split('');
+const str = "cartaz".split('');
 
 let indices = [];
 
 str.map((item) => {
   letras.forEach((letra, letraIndex) => {
     if (letra == item) {
-      indices.push(letraIndex);
+      letraIndex += 2
+      if (letraIndex > 26) {
+        letraIndex = letraIndex - 26
+      }
+      indices.push(letraIndex)
     }
   });
 });
 
 console.log(indices)
+
+indices.forEach(indice => {
+  let mensagem = letras[indice]
+
+  console.log(mensagem)
+})
+
