@@ -1,53 +1,78 @@
-const letras = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
+// ((Codigo ASCII da letra + Codido da primeira letra + Deslocamento escolhido pelo usuario) % Tamanho do alfabeto) + Codido da primeira letra
 
-const str = "cartaz".split('');
+let str = "Um pequeno jabuti xereta viu dez cegonhas felizes.";
+let deslocamento = 2;
+let regex = /([\u0300-\u036f]|[^0-9a-zA-Z])/g;
 
-let indices = [];
 
-str.map((item) => {
-  letras.forEach((letra, letraIndex) => {
-    if (letra == item) {
-      letraIndex += 2
-      if (letraIndex > 26) {
-        letraIndex = letraIndex - 26
-      }
-      indices.push(letraIndex)
+
+
+
+const criptografar = (string) => {
+  let criptografado = "";
+  let resultado;
+
+  for (let i = 0; i < string.length; i++) {
+    let asc = string.charCodeAt([i]);
+
+    let primeiraLetra;
+
+    if (/[A-Z]/.test(string[i])) {
+      primeiraLetra = 65;
+    } else {
+      primeiraLetra = 97;
     }
-  });
-});
 
-console.log(indices)
+    if (regex.test(string[i]) || /\s+/g.test(string[i])) {
+      resultado = asc;
+    } else {
+      resultado = ((asc - primeiraLetra + deslocamento) % 26) + primeiraLetra;
+    }
 
-indices.forEach(indice => {
-  let mensagem = letras[indice]
+    criptografado += String.fromCharCode(resultado);
+  }
 
-  console.log(mensagem)
-})
+  return criptografado;
+};
 
+
+
+
+
+const descriptografar = (string) => {
+  let descriptografado = "";
+  let resultado;
+
+  for (let i = 0; i < string.length; i++) {
+    let asc = string.charCodeAt([i]);
+
+    let primeiraLetra;
+
+    if (/[A-Z]/.test(string[i])) {
+      primeiraLetra = 65;
+    } else {
+      primeiraLetra = 97;
+    }
+
+    if (regex.test(string[i]) || /\s+/g.test(string[i])) {
+      resultado = asc;
+    } else {
+      let num = asc - primeiraLetra - deslocamento;
+      
+      let i = 0;
+      while (num < 0) {
+        num += 26;
+        i++;
+      }
+
+      resultado = (num % 26) + primeiraLetra;
+    }
+
+    descriptografado += String.fromCharCode(resultado);
+  }
+
+  return descriptografado;
+};
+
+console.log(criptografar(str));
+console.log(descriptografar(criptografar(str)));
