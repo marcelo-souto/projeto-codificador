@@ -1,12 +1,7 @@
 // ((Codigo ASCII da letra + Codido da primeira letra + Deslocamento escolhido pelo usuario) % Tamanho do alfabeto) + Codido da primeira letra
 
-let str = "Um pequeno jabuti xereta viu dez cegonhas felizes.";
-let deslocamento = 2;
-let regex = /([\u0300-\u036f]|[^0-9a-zA-Z])/g;
-
-
-
-
+let str = ".,!;:?><[]~´";
+let deslocamento = 545;
 
 const criptografar = (string) => {
   let criptografado = "";
@@ -23,7 +18,11 @@ const criptografar = (string) => {
       primeiraLetra = 97;
     }
 
-    if (regex.test(string[i]) || /\s+/g.test(string[i])) {
+    if (/[^a-zA-Z0-9]+/g.test(string[i])) {
+      // Devolve os caracteres especias
+
+      resultado = asc;
+    } else if (string[i] == " ") {
       resultado = asc;
     } else {
       resultado = ((asc - primeiraLetra + deslocamento) % 26) + primeiraLetra;
@@ -34,10 +33,6 @@ const criptografar = (string) => {
 
   return criptografado;
 };
-
-
-
-
 
 const descriptografar = (string) => {
   let descriptografado = "";
@@ -54,11 +49,15 @@ const descriptografar = (string) => {
       primeiraLetra = 97;
     }
 
-    if (regex.test(string[i]) || /\s+/g.test(string[i])) {
+    if (/[^a-zA-Z0-9]+/g.test(string[i])) {
+      // Devolve os caracteres especias
+
+      resultado = asc;
+    } else if (string[i] == " ") {
       resultado = asc;
     } else {
       let num = asc - primeiraLetra - deslocamento;
-      
+
       let i = 0;
       while (num < 0) {
         num += 26;
