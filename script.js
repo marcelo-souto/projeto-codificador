@@ -1,28 +1,29 @@
 // ((Codigo ASCII da letra + Codido da primeira letra + Deslocamento escolhido pelo usuario) % Tamanho do alfabeto) + Codido da primeira letra
 
-let str = ".,!;:?><[]~´";
-let deslocamento = 545;
+let str = "Áá";
+let deslocamento = 154;
+const isNotALetter = /[^a-zA-Z]+/
+const isAnUpperCaseLetter = /[A-Z]/
 
 const criptografar = (string) => {
   let criptografado = "";
   let resultado;
-
+  
   for (let i = 0; i < string.length; i++) {
     let asc = string.charCodeAt([i]);
 
     let primeiraLetra;
 
-    if (/[A-Z]/.test(string[i])) {
+    if (isAnUpperCaseLetter.test(string[i])) {
       primeiraLetra = 65;
     } else {
       primeiraLetra = 97;
     }
 
-    if (/[^a-zA-Z0-9]+/g.test(string[i])) {
-      // Devolve os caracteres especias
-
-      resultado = asc;
-    } else if (string[i] == " ") {
+    if (
+      isNotALetter.test(string[i])
+    ) {
+      // Checa se há caracteres especiais - Checa se há espaços - Checa se há números
       resultado = asc;
     } else {
       resultado = ((asc - primeiraLetra + deslocamento) % 26) + primeiraLetra;
@@ -43,17 +44,16 @@ const descriptografar = (string) => {
 
     let primeiraLetra;
 
-    if (/[A-Z]/.test(string[i])) {
+    if (isAnUpperCaseLetter.test(string[i])) {
       primeiraLetra = 65;
     } else {
       primeiraLetra = 97;
     }
 
-    if (/[^a-zA-Z0-9]+/g.test(string[i])) {
-      // Devolve os caracteres especias
-
-      resultado = asc;
-    } else if (string[i] == " ") {
+    if (
+      isNotALetter.test(string[i])
+    ) {
+      // Checa se há caracteres especiais - Checa se há espaços - Checa se há números
       resultado = asc;
     } else {
       let num = asc - primeiraLetra - deslocamento;
@@ -75,3 +75,27 @@ const descriptografar = (string) => {
 
 console.log(criptografar(str));
 console.log(descriptografar(criptografar(str)));
+
+
+
+// function trocarLetrasMinusculasAcentuadas (text){       
+                                                          
+//   text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
+//   text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
+//   text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
+//   text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
+//   text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
+//   text = text.replace(new RegExp('[Ç]','gi'), 'c');
+//   return text;                 
+// }
+
+// function trocarLetrasMaiusculasAcentuadas (text){       
+                                                          
+//   text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'A');
+//   text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'E');
+//   text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'I');
+//   text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'O');
+//   text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'U');
+//   text = text.replace(new RegExp('[Ç]','gi'), 'C');
+//   return text;                 
+// }
