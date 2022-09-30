@@ -1,6 +1,6 @@
 // ((Codigo ASCII da letra + Codido da primeira letra + Deslocamento escolhido pelo usuario) % Tamanho do alfabeto) + Codido da primeira letra
 
-let str = "Pipoca esta na pénela 12345678910";
+let str = "Áá";
 let deslocamento = 154;
 const isNotALetter = /[^a-zA-Z]+/
 const isAnUpperCaseLetter = /[A-Z]/
@@ -78,13 +78,24 @@ console.log(descriptografar(criptografar(str)));
 
 
 
-// {       
-//   text = text.toLowerCase();                                                         
+// function trocarLetrasMinusculasAcentuadas (text){       
+                                                          
 //   text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
 //   text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
 //   text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
 //   text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
 //   text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
 //   text = text.replace(new RegExp('[Ç]','gi'), 'c');
+//   return text;                 
+// }
+
+// function trocarLetrasMaiusculasAcentuadas (text){       
+                                                          
+//   text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'A');
+//   text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'E');
+//   text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'I');
+//   text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'O');
+//   text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'U');
+//   text = text.replace(new RegExp('[Ç]','gi'), 'C');
 //   return text;                 
 // }
