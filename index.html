@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{Des}codifica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div data-slide="0" class="slide">
+      <div class="container">
+        <h1>Seja bem-vindo ao projeto {Des}codifica</h1>
+        <label for="mensagem">Digite ou cole sua mensagem aqui</label>
+        <div class="input-container">
+          <textarea class="input" id="mensagem" cols="30" rows="4"></textarea>
+          <div class="mensagem-erro">
+            O campo está vazio. Digite algo para continuar
+          </div>
+        </div>
+        <button class="btn btn-proximo">próximo</button>
+      </div>
+    </div>
+
+    <div data-slide="1" class="slide">
+      <p>O que você quer fazer com a mensagem?</p>
+
+      <div class="container-btn">
+        <button class="btn btn-escolha" data-escolha="criptografar">
+          Criptografar
+        </button>
+        <button class="btn btn-escolha" data-escolha="descriptografar">
+          Descriptografar
+        </button>
+        <div class="botao-erro">Escolha uma opção para continuar</div>
+      </div>
+
+      <button class="btn btn-proximo">próximo</button>
+    </div>
+
+    <div data-slide="2" class="slide">
+      <p>Como você quer <span class="escolha"></span> sua mensagem?</p>
+      <div class="container-btn">
+        <button class="btn btn-escolha" data-encrip="base64">Base64</button>
+        <button class="btn btn-escolha" data-encrip="cifradecesar">
+          Cifra de César
+        </button>
+
+        <div class="container-desloc">
+          <div class="input-container">
+            <label for="deslocamento">Digite o valor de deslocamento:</label>
+            <input
+              class="input"
+              type="text"
+              id="deslocamento"
+              autocomplete="off"
+            />
+            <div class="mensagem-erro">
+              O campo está vazio. Digite algo para continuar.
+            </div>
+            <div class="mensagem-erro-2">
+              Digite um valor válido. Só são aceitos numeros.
+            </div>
+          </div>
+
+          
+        </div>
+
+        <button class="btn btn-finalizar"><span class="escolha"></span> agora</button>
+      </div>
+    </div>
+
+    <div data-slide="3" class="slide">
+      <p>Resultado:</p>
+      <textarea
+        class="input"
+        id="resultado"
+        cols="30"
+        rows="6"
+        disabled
+      ></textarea>
+      <button class="btn btn-recomecar">recomeçar</button>
+    </div>
+
+    <script src="./objeto.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
