@@ -25,6 +25,8 @@ h3 {
   justify-content: center;
   align-items: center;
   transition: .3s;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .container {
@@ -74,6 +76,16 @@ h3 {
   position: relative;
 }
 
+@media (max-width: 500px) {
+  .container-btn {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .btn-proximo, .btn-recomecar, .btn-finalizar {
+   width: 100%;   
+  }
+}
+
 .container-desloc, .btn-finalizar {
   grid-column: 1 / -1;
   text-align: center;
@@ -87,10 +99,6 @@ h3 {
   opacity: 0;
   transform: translateY(50px);
   display: none;
-}
-
-.container-btn {
-  position: relative;
 }
 
 .btn {
@@ -108,6 +116,7 @@ h3 {
   background-color: #1F1F1F;
   color: #eeeeee;
 }
+
 
 .btn-proximo:hover {
   background-color: #313131;
